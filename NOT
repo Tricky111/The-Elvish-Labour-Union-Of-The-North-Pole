@@ -1,0 +1,31 @@
+local DiameterTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 200, 300, 50 )
+DiameterTextField.id = "DiameterTextField"
+
+local CostTextField = display.newText( "Total Cost", display.contentCenterX, display.contentCenterY - 200, native.systemFont, 25 )
+CostTextField.id = "CostTextField"
+CostTextField:setFillColor( 1, 1, 1 )
+
+local wTextField = display.newText( "Enter Diameter", display.contentCenterX, display.contentCenterY + 160, native.systemFont, 40 )
+wTextField.id = "wTextField"
+wTextField:setFillColor( 1, 1, 1 )
+
+local calculateButton = display.newImageRect( "Calculate.png", 200, 157 )
+calculateButton.x = display.contentCenterX
+calculateButton.y = display.contentCenterY
+calculateButton.id = "calculate button"
+ 
+local function calculateButtonTouch( event )
+
+ 
+    local Diameter
+    local Cost
+   
+    Diameter = DiameterTextField.text
+    Cost = ( 0.50 * Diameter + 0.75 + 1 ) * 1.13
+
+    CostTextField.text = "The Cost Is " .. Cost
+
+    return true
+end
+
+calculateButton:addEventListener( "touch", calculateButtonTouch )
